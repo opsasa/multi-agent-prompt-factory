@@ -1,0 +1,45 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build exe with PyInstaller
+        run: |
+          pyinstaller --noconfirm --onedir --name PromptFactory app.py
+
+      - name: Copy config example
+        run: |
+          copy .env.example dist\PromptFactory\.env.example
+
+      - name: Create run guide
+        run: |
+          echo 使用方法：> dist\PromptFactory\README_RUN.txt
+          echo 1. 复制 .env.example，重命名为 .env >> dist\PromptFactory\README_RUN.txt
+          echo 2. 打开 .env，填写你的 API Key >> dist\PromptFactory\README_RUN.txt
+          echo 3. 双击 PromptFactory.exe >> dist\PromptFactory\README_RUN.txt
+          echo 4. 查看 output/final_prompt.md >> dist\PromptFactory\README_RUN.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PromptFactory-Windows
+          path: dist/PromptFactory
