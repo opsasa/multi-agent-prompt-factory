@@ -2,7 +2,7 @@
 
 
 
-一个基于 CrewAI 的多 Agent Prompt 生成器。
+一个基于 CrewAI 的多 Agent Prompt 生成器。（使用了gpt5.5进行code）
 
 
 
