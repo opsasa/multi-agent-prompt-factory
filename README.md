@@ -19,9 +19,45 @@
 \- 输出最终优化版 Prompt
 
 \- 支持 Docker 运行
+## Windows 无 Docker 运行
 
+如果你没有 Docker，也可以直接用 Python 运行。
 
+### 1. 安装 Python
 
+请安装 Python 3.10 或以上版本。
+
+### 2. 下载项目
+
+点击 GitHub 页面右上角：
+
+```text
+Code → Download ZIP
+
+3. 配置 API Key
+
+复制 .env.example，重命名为 .env。
+
+然后填写：
+
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+MODEL=deepseek/deepseek-chat
+TEMPERATURE=0.5
+4. 安装依赖
+
+双击：
+
+setup_windows.bat
+5. 运行程序
+
+双击：
+
+run_windows.bat
+
+运行完成后，结果会保存到：
+
+output/final_prompt.md
 \## 技术栈
 
 
@@ -57,12 +93,3 @@
 ├─ .env.example
 
 └─ README.md
-## 使用方法
-
-1. 克隆或下载本项目
-2. 复制 `.env.example`，重命名为 `.env`
-3. 在 `.env` 里填写你的 API Key
-4. 运行：
-
-```bash
-docker compose up --build
