@@ -24,19 +24,27 @@ jobs:
 
       - name: Build exe with PyInstaller
         run: |
-          pyinstaller --noconfirm --onedir --name PromptFactory app.py
+          pyinstaller --noconfirm --onedir --name PromptFactory --collect-all crewai --collect-all litellm app.py
 
       - name: Copy config example
         run: |
-          copy .env.example dist\PromptFactory\.env.example
+          copy .env.example dist\PromptFactory\env.example.txt
+
+      - name: Create run bat
+        run: |
+          echo @echo off > dist\PromptFactory\run.bat
+          echo cd /d %%~dp0 >> dist\PromptFactory\run.bat
+          echo PromptFactory.exe >> dist\PromptFactory\run.bat
+          echo pause >> dist\PromptFactory\run.bat
 
       - name: Create run guide
         run: |
           echo 使用方法：> dist\PromptFactory\README_RUN.txt
-          echo 1. 复制 .env.example，重命名为 .env >> dist\PromptFactory\README_RUN.txt
-          echo 2. 打开 .env，填写你的 API Key >> dist\PromptFactory\README_RUN.txt
-          echo 3. 双击 PromptFactory.exe >> dist\PromptFactory\README_RUN.txt
-          echo 4. 查看 output/final_prompt.md >> dist\PromptFactory\README_RUN.txt
+          echo 1. 打开 env.example.txt >> dist\PromptFactory\README_RUN.txt
+          echo 2. 在 PromptFactory.exe 同一层目录新建 .env >> dist\PromptFactory\README_RUN.txt
+          echo 3. 把 env.example.txt 的内容复制到 .env 并填写 API Key >> dist\PromptFactory\README_RUN.txt
+          echo 4. 双击 run.bat 或 PromptFactory.exe >> dist\PromptFactory\README_RUN.txt
+          echo 5. 查看 output\final_prompt.md >> dist\PromptFactory\README_RUN.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
