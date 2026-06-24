@@ -1,0 +1,10 @@
+.env
+output/
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+build/
+*.spec
+.DS_Store
