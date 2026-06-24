@@ -31,7 +31,6 @@
 
 点击 GitHub 页面右上角：
 
-```text
 Code → Download ZIP
 
 3. 配置 API Key
@@ -59,7 +58,7 @@ run_windows.bat
 
 output/final_prompt.md
 \## 技术栈
-
+```text
 
 
 \- Python
