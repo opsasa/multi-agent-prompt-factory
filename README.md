@@ -19,6 +19,15 @@
 \- 输出最终优化版 Prompt
 
 \- 支持 Docker 运行
+## Windows 版本下载
+
+前往 Releases 页面下载最新版本：
+
+https://github.com/opsasa/multi-agent-prompt-factory/releases
+不需要安装 Python
+不需要安装 Docker
+需要自己配置 .env 和 API Key
+
 ## Windows 无 Docker 运行
 
 如果你没有 Docker，也可以直接用 Python 运行。
