@@ -57,4 +57,12 @@
 ├─ .env.example
 
 └─ README.md
+## 使用方法
 
+1. 克隆或下载本项目
+2. 复制 `.env.example`，重命名为 `.env`
+3. 在 `.env` 里填写你的 API Key
+4. 运行：
+
+```bash
+docker compose up --build
